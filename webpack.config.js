@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 //抽出css檔案
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 //自動產生html 靜態檔案對應
+
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -45,6 +46,19 @@ module.exports = {
                         }
                     }
                 ],
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/,
+                use:[
+                    {
+                        loader: 'url-loader',
+                        options: { limit:1000 }
+                    },
+                    {
+                        loader:'image-webpack-loader',
+                        options: {byPassOnDebug: true }
+                    }
+                ]
             }
         ]   //rules end
     },
